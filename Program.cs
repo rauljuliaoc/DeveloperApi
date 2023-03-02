@@ -1,5 +1,5 @@
 using DeveloperApi.Models;
-using DeveloperApi.DeveloperDatabaseSettings;
+using DeveloperApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<DeveloperDatabaseSettings>(
     builder.Configuration.GetSection("DeveloperDatabase")
 );
+
+//Adding the service and initializing the DB
+builder.Services.AddSingleton<DeveloperService>();
 
 // Add services to the container.
 
