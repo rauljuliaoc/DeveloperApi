@@ -1,4 +1,4 @@
-namespace DeveloperApi.DeveloperDatabaseSettings;
+namespace DeveloperApi.Models;
 
 public class DeveloperDatabaseSettings {
 
