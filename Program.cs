@@ -1,4 +1,12 @@
+using DeveloperApi.Models;
+using DeveloperApi.DeveloperDatabaseSettings;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Add db connection services
+builder.Services.Configure<DeveloperDatabaseSettings>(
+    builder.Configuration.GetSection("DeveloperDatabase")
+);
 
 // Add services to the container.
 
