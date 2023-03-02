@@ -3,27 +3,35 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace DeveloperApi.Models;
 
+[BsonIgnoreExtraElements]
 public class Dev {
 
     [BsonId]
     [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
     public string? Id { get; set; }
 
-    [BsonElement("Name")]
-    public string FullName { get; set; }
+    [BsonElement("FullName")]
+    public string FullName { get; set; } = null!;
 
-    public string FirstName { get; set; }
+    [BsonElement("FirstName")]
+    public string FirstName { get; set; } = null!;
 
-    public string LastName { get; set; }
+    [BsonElement("LastName")]
+    public string LastName { get; set; } = null!;
 
-    public string DeveloperType { get; set; }
+    [BsonElement("DeveloperType")]
+    public string DeveloperType { get; set; } = null!;
 
+    [BsonElement("Age")]
     public int Age { get; set; }
 
+    [BsonElement("SalaryByHours")]
     public decimal SalaryByHours { get; set; }
 
-    public string email { get; set; }
+    [BsonElement("email")]
+    public string email { get; set; } = null!;
 
+    [BsonElement("WorkedHours")]
     public decimal WorkedHours { get; set; }
 
 }
