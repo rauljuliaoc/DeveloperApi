@@ -10,8 +10,9 @@ public class DevsController : ControllerBase
 {
 
     private readonly DeveloperService _developerService;
+    
 
-    public DevsController(DeveloperService developerService) =>
+    public DevsController(DeveloperService developerService)=>
         _developerService = developerService;
 
     [HttpGet]
@@ -75,8 +76,21 @@ public class DevsController : ControllerBase
             return BadRequest("The salary needs to be greater than 13");
         }
 
-        newDev.DeveloperType = newDevM.Dev_type;
-        newDev.email = newDevM.email; 
+        if(SetDevValueType(newDevM.Dev_type) == "")
+        {
+            return BadRequest("The developer type needs to be: junior, senior, intermediate or lead");
+        }else
+        {
+            newDev.DeveloperType = SetDevValueType(newDevM.Dev_type);
+        }
+
+        if(newDevM.email is null)
+        {
+            return BadRequest("The email can't be null or empty");
+        }else
+        {   
+            newDev.email = newDevM.email; 
+        }
 
         await _developerService.CreateAsync(newDev);
 
@@ -111,6 +125,27 @@ public class DevsController : ControllerBase
 
         return NoContent(); 
     }
+
+    private static string SetDevValueType(string type){
+        if(type == "junior")
+        {
+            return "JUNIOR";
+        }else if (type == "intermediate")
+        {
+            return "INTERMEDIATE";
+        } else if(type == "senior")
+        {
+            return "SENIOR";
+        }else if(type == "lead")
+        {
+            return "LEAD";
+        }else {
+
+            return "";
+        }
+    }
+
+
 
     public class DevModel{
         public string F_name {get; set;} = null!;
