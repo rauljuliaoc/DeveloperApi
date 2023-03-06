@@ -30,7 +30,10 @@ public class DeveloperService
     public async Task UpdateOneAsync(string id, Dev updateDev) =>
         await _devCollection.ReplaceOneAsync(x => x.Id == id, updateDev);
 
-    public async Task RemoveOneAsync( string id) => 
-        await _devCollection.DeleteOneAsync(x => x.Id == id);
+    public async Task RemoveOneAsync( string email) => 
+        await _devCollection.DeleteOneAsync(x => x.email == email);
+
+    public async Task<Dev> GetDevByEmailAsync(string email) =>
+        await _devCollection.Find(x => x.email == email).FirstOrDefaultAsync();
 
 }
