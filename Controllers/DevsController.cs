@@ -30,6 +30,17 @@ public class DevsController : ControllerBase
         return dev;
     }
 
+    [HttpGet("GetByEmail/{email}")]
+    public async Task<ActionResult<Dev>> GetByEmail(string email){
+        var dev = await _developerService.GetDevByEmailAsync(email);
+
+        if (dev is null)
+        {
+            return NotFound();
+        }
+
+        return dev;
+    }
 
     [HttpPost]
     public async Task<IActionResult> Post(DevModel newDevM){
@@ -112,16 +123,16 @@ public class DevsController : ControllerBase
 
     }
 
-    [HttpDelete("{id:length(24)}")]
-    public async Task<IActionResult> Delete(string id){
-        var dev = await _developerService.GetDevAsync(id);
+    [HttpDelete("{email}")]
+    public async Task<IActionResult> Delete(string email){
+        var dev = await _developerService.GetDevByEmailAsync(email);
 
         if (dev is null)
         {
             return NoContent();
         }
 
-        await _developerService.RemoveOneAsync(id);
+        await _developerService.RemoveOneAsync(email);
 
         return NoContent(); 
     }
