@@ -35,3 +35,11 @@ public class Dev {
     public decimal WorkedHours { get; set; }
 
 }
+
+public enum DeveloperType
+{
+    Junior,
+    Senior,
+    Intermediate,
+    Lead,
+}
