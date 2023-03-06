@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/raulhjuliaoc/Developer/dotnet training/DeveloperApi/DeveloperApi.csproj": {}
+    "C:\\Users\\raul.juliaoc\\OneDrive - Perficient, Inc\\dotnet courses\\Training\\DeveloperApi\\DeveloperApi.csproj": {}
   },
   "projects": {
-    "/Users/raulhjuliaoc/Developer/dotnet training/DeveloperApi/DeveloperApi.csproj": {
+    "C:\\Users\\raul.juliaoc\\OneDrive - Perficient, Inc\\dotnet courses\\Training\\DeveloperApi\\DeveloperApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/raulhjuliaoc/Developer/dotnet training/DeveloperApi/DeveloperApi.csproj",
+        "projectUniqueName": "C:\\Users\\raul.juliaoc\\OneDrive - Perficient, Inc\\dotnet courses\\Training\\DeveloperApi\\DeveloperApi.csproj",
         "projectName": "DeveloperApi",
-        "projectPath": "/Users/raulhjuliaoc/Developer/dotnet training/DeveloperApi/DeveloperApi.csproj",
-        "packagesPath": "/Users/raulhjuliaoc/.nuget/packages/",
-        "outputPath": "/Users/raulhjuliaoc/Developer/dotnet training/DeveloperApi/obj/",
+        "projectPath": "C:\\Users\\raul.juliaoc\\OneDrive - Perficient, Inc\\dotnet courses\\Training\\DeveloperApi\\DeveloperApi.csproj",
+        "packagesPath": "C:\\Users\\raul.juliaoc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\raul.juliaoc\\OneDrive - Perficient, Inc\\dotnet courses\\Training\\DeveloperApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/raulhjuliaoc/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\raul.juliaoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
