@@ -87,7 +87,7 @@ public class DevsController : ControllerBase
             return BadRequest("The salary needs to be greater than 13");
         }
 
-        if(SetDevValueType(newDevM.Dev_type) == "")
+        if(SetDevValueType(newDevM.Dev_type) is null)
         {
             return BadRequest("The developer type needs to be: junior, senior, intermediate or lead");
         }else
@@ -108,22 +108,38 @@ public class DevsController : ControllerBase
         return CreatedAtAction(nameof(Get), new {id = newDev.Id}, newDev);
     }
 
-    [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Put(string id, Dev updateInfo){
+    [HttpPut("UpdateDev/{email}")]
+    public async Task<IActionResult> UpdateDev(string email, DevModel updateInfo){
 
-        var dev = await _developerService.GetDevAsync(id);
+        var dev = await _developerService.GetDevByEmailAsync(email);
 
         if(dev is null){
             return NotFound();
         }
-        updateInfo.Id = dev.Id;
 
-        await _developerService.UpdateOneAsync(id, updateInfo);
+        dev.FirstName = (updateInfo.F_name is null)? dev.FirstName : updateInfo.F_name;
+        dev.LastName = (updateInfo.L_name is null)? dev.LastName : updateInfo.L_name;
+
+        if (updateInfo.Age =! null)
+        {
+            if (updateInfo > 10 )
+            {
+                dev.Age = updateInfo.Age;
+
+            }else
+            {
+                return BadRequest("We only accept peope with age greater than 10");
+            } 
+        }
+
+        dev.email = (updateInfo.email is null)? dev.email : updateInfo.email;
+
+        //await _developerService.UpdateOneAsync(id, updateInfo); 
         return NoContent();
 
     }
 
-    [HttpDelete("{email}")]
+    [HttpDelete("Delete/{email}")]
     public async Task<IActionResult> Delete(string email){
         var dev = await _developerService.GetDevByEmailAsync(email);
 
@@ -140,19 +156,19 @@ public class DevsController : ControllerBase
     private static string SetDevValueType(string type){
         if(type == "junior")
         {
-            return "JUNIOR";
+            return DeveloperType.Junior.ToString();
         }else if (type == "intermediate")
         {
-            return "INTERMEDIATE";
+            return DeveloperType.Intermediate.ToString();
         } else if(type == "senior")
         {
-            return "SENIOR";
+            return DeveloperType.Senior.ToString();
         }else if(type == "lead")
         {
-            return "LEAD";
+            return DeveloperType.Lead.ToString();
         }else {
 
-            return "";
+            return null;
         }
     }
 
